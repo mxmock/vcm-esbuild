@@ -1,0 +1,80 @@
+@use "../mixin" as mxn;
+
+@keyframes showMenu {
+  from {
+    opacity: 0.6;
+    z-index: -10;
+    transform: translateY(-40%) scaleY(0.6);
+  }
+  to {
+    opacity: 1;
+    z-index: -10;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.header {
+  --mobile-nav-display: flex;
+  --desktop-nav-display: none;
+  --logo-width: calc(152px + 2vmin);
+  --logo-height: calc(48px + 2vmin);
+
+  .container {
+    @include mxn.flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-height);
+    max-height: var(--header-height);
+    @media (hover: hover) {
+      transform: translateX(-8px);
+    }
+  }
+  &__logo {
+    a {
+      @include mxn.flex;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    @include mxn.flex;
+    border-radius: 8px;
+    max-width: var(--logo-width);
+    min-width: var(--logo-width);
+    max-height: var(--logo-height);
+    min-height: var(--logo-height);
+  }
+  &__right-part {
+    @include mxn.flex;
+    align-items: center;
+  }
+  &__nav {
+    display: var(--desktop-nav-display);
+  }
+  &__menu {
+    --icon-color: var(--grey-text);
+    padding: 4px;
+    cursor: pointer;
+    display: var(--mobile-nav-display);
+  }
+  &__mobile-menu {
+    --navigation-gap: 0;
+    --navigation-direction: column;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    padding: 16px 0;
+    position: absolute;
+    background: var(--white);
+    animation: showMenu var(--cubic-anim);
+    box-shadow: 0 10px 10px rgb(0 0 0 / 15%);
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+  }
+  @media (min-width: 700px) {
+    --mobile-nav-display: none;
+    --desktop-nav-display: flex;
+  }
+  z-index: 10;
+  position: relative;
+  background: var(--white);
+  box-shadow: 0 0 16px rgb(0 0 0 / 15%), inset 0 -1px 0 rgba(137, 138, 139, 0.4);
+}

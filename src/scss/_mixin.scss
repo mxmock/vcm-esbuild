@@ -1,0 +1,47 @@
+@mixin grow($val: 1) {
+  flex-grow: #{$val};
+  flex-shrink: 0;
+  flex-basis: 0%;
+}
+
+@mixin flex($direction: row, $wrap: wrap) {
+  display: flex;
+  flex-wrap: #{$wrap};
+  flex-direction: #{$direction};
+}
+
+@mixin center {
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin black-alpha($alpha: 100%) {
+  background-color: rgb(0 0 0 / #{$alpha});
+}
+
+@mixin border {
+  --border-opacity: 1;
+  --border-width: 1px;
+  --border-spacing: 0px;
+  --border-style: solid;
+  --border-color: var(--black);
+  & > * {
+    z-index: 3;
+    position: relative;
+  }
+  &:before {
+    content: "";
+    z-index: 2;
+    position: absolute;
+    pointer-events: none;
+    top: var(--border-spacing);
+    left: var(--border-spacing);
+    right: var(--border-spacing);
+    bottom: var(--border-spacing);
+    opacity: var(--border-opacity);
+    border-radius: var(--btn-radius);
+    border: var(--border-width) var(--border-style) var(--border-color);
+  }
+  z-index: 1;
+  position: relative;
+}

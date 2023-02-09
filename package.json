@@ -1,0 +1,43 @@
+{
+  "name": "react-w-cra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/js/index.js",
+  "scripts": {
+    "watch": "node esbuild.mjs",
+    "sass": "sass --watch src/index.scss src/css/index.css",
+    "dev": "npm run watch & npm run sass",
+    "prod": "npx babel-node esbuild.prod.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.17.3",
+    "esbuild-plugin-copy-html": "^0.1.2",
+    "esbuild-plugin-css-opti": "^0.1.2",
+    "esbuild-plugin-react-static": "^0.2.4",
+    "esbuild-plugin-save-server-data": "^0.1.0"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "8.0.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "last 4 version"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "overrides": {
+    "react-error-overlay": "6.0.9"
+  }
+}

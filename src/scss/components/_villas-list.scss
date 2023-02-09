@@ -1,0 +1,101 @@
+@use "../mixin" as mxn;
+
+.villas-list {
+  --card-width: 100%;
+  --image-width: initial;
+  --card-margin-top: -40px;
+  --card-margin-left: 0px;
+  --card-margin-right: 0px;
+  --image-height: calc(160px + 20vmin);
+  @media (min-width: 916px) {
+    --card-width: 414px;
+    --card-margin-top: 0;
+    --image-height: 568px;
+    --card-margin-left: -256px;
+    --image-width: calc(100% - 158px);
+  }
+  li {
+    @media (min-width: 916px) {
+      &:nth-child(2n) {
+        --card-margin-left: 0px;
+        --card-margin-right: -256px;
+        --card-shadow: -6px 6px 16px rgba(0, 0, 0, 0.15);
+        .villas-list__article {
+          flex-direction: row-reverse;
+        }
+      }
+      .villas-list__article {
+        @include mxn.flex;
+        align-items: center;
+      }
+    }
+  }
+  &__article {
+    @include mxn.flex("column", "nowrap");
+  }
+  &__image {
+    div {
+      min-height: var(--image-height);
+      border-radius: var(--card-radius);
+    }
+    min-width: var(--image-width);
+  }
+  &__card {
+    @include mxn.flex("column", "nowrap");
+    position: relative;
+    background: var(--white);
+    min-width: var(--card-width);
+    max-width: var(--card-width);
+    box-shadow: var(--card-shadow);
+    border-radius: var(--card-radius);
+    margin-top: var(--card-margin-top);
+    margin-left: var(--card-margin-left);
+    margin-right: var(--card-margin-right);
+  }
+  &__title {
+    h2 {
+      color: var(--blue-black);
+      font-size: var(--font-size-large);
+      font-weight: var(--font-weight-bold);
+    }
+    padding: 8px 16px;
+  }
+  &__features {
+    li {
+      @include mxn.grow;
+      min-width: 40%;
+    }
+    @include mxn.flex;
+    gap: 8px;
+    padding: 16px;
+  }
+  &__footer {
+    @include mxn.flex;
+    padding: 24px;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  &__price {
+    span {
+      &:first-child,
+      &:last-child {
+        font-style: italic;
+        color: var(--grey-text);
+        font-size: var(--font-size-tiny);
+      }
+      &:last-child,
+      &:nth-child(2) {
+        line-height: 1;
+      }
+      &:nth-child(2) {
+        color: var(--blue-logo);
+        transform: translateX(-4px);
+        font-size: var(--font-size-huge);
+        font-weight: var(--font-weight-bold);
+      }
+    }
+    @include mxn.flex("column", "nowrap");
+  }
+  @include mxn.flex("column", "nowrap");
+  gap: 32px;
+}

@@ -1,0 +1,37 @@
+:root {
+  --black: rgba(44, 46, 48, 1);
+  --white: rgba(255, 255, 255, 1);
+  --blue-black: rgba(44, 66, 99, 1);
+  --blue-bg: rgba(210, 230, 254, 1);
+  --blue-bold: rgba(52, 80, 135, 1);
+  --blue-logo: rgba(56, 128, 183, 1);
+  --grey-text: rgba(137, 138, 139, 1);
+  --grey-text-2: rgba(125, 125, 125, 1);
+  --break-white: rgba(247, 250, 253, 1);
+
+  --cubic-anim: 300ms cubic-bezier(0.23, 1, 0.32, 1);
+
+  --card-radius: 12px;
+  --card-shadow: 6px 6px 16px rgba(0, 0, 0, 0.15);
+
+  --header-height: 72px;
+
+  --font-family: "Metropolis", sans-serif;
+
+  --font-weight-thin: 100;
+  --font-weight-extra-light: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+
+  --font-size-tiny: calc(8px + 0.6vmin);
+  --font-size-small: calc(10px + 0.6vmin);
+  --font-size-medium: calc(12px + 0.6vmin);
+  --font-size-large: calc(14px + 0.6vmin);
+  --font-size-big: calc(18px + 0.6vmin);
+  --font-size-huge: calc(24px + 0.6vmin);
+}
