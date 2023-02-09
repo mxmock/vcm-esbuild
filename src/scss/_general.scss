@@ -38,7 +38,7 @@ body {
   line-height: 1.618;
   color: var(--black);
   letter-spacing: 0.04rem;
-  background: var(--blue-bg);
+  background: var(--white);
   font-family: var(--font-family);
   font-size: calc(12px + 0.6vmin);
   -moz-osx-font-smoothing: grayscale;
@@ -123,8 +123,8 @@ ul {
 }
 
 .bg-effect-home {
-  background-attachment: local;
   background-repeat: no-repeat;
-  background-position: center 600px;
+  background-color: var(--blue-bg);
+  background-position: center 640px;
   background-image: url("~../../../assets/images/bg_effect_home.svg");
 }
