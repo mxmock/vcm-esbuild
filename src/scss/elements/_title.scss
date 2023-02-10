@@ -1,3 +1,5 @@
+@use "../mixin" as mxn;
+
 .section-title {
   h1 {
     margin: 0;
@@ -14,4 +16,29 @@
     font-weight: var(--font-weight-semi-bold);
   }
   padding: 48px 0;
+}
+
+.main-title {
+  &__h1 {
+    @include mxn.grow;
+  }
+  &__home {
+    --icon-size: 10px;
+    --icon-color: var(--grey-text);
+    a {
+      text-decoration: none;
+      color: var(--grey-text-2);
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-semi-bold);
+    }
+    @include mxn.flex("row", "nowrap");
+    gap: 4px;
+    align-items: center;
+    @media (min-width: 700px) {
+      display: none;
+    }
+  }
+  @include mxn.flex("row", "wrap-reverse");
+  gap: 24px;
+  align-items: center;
 }

@@ -1,0 +1,23 @@
+@use "../mixin" as mxn;
+
+.gallery {
+  --slider-element-width: 90%;
+  --gallery-image-width: 100%;
+  --gallery-image-height: 64vmin;
+  &__image {
+    @include mxn.placeholder;
+    background: var(--light-grey);
+    box-shadow: var(--card-shadow);
+    border-radius: var(--card-radius);
+    min-width: var(--gallery-image-width);
+    max-width: var(--gallery-image-width);
+    min-height: var(--gallery-image-height);
+    max-height: var(--gallery-image-height);
+    img {
+      z-index: 2;
+    }
+  }
+  @media (min-height: 1000px) {
+    --gallery-image-height: 48vmin;
+  }
+}

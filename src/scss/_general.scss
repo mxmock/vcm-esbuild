@@ -1,5 +1,7 @@
 html,
 body,
+article,
+section,
 p {
   display: flex;
   flex-direction: column;
@@ -122,9 +124,22 @@ ul {
   flex-direction: column;
 }
 
+.bg-effect-details {
+  background-repeat: no-repeat;
+  background-color: var(--blue-bg);
+  background-position: center 640px;
+  // background-image: url("~../../../assets/images/bg_effect_details.svg");
+}
+
 .bg-effect-home {
   background-repeat: no-repeat;
   background-color: var(--blue-bg);
   background-position: center 640px;
   background-image: url("~../../../assets/images/bg_effect_home.svg");
+}
+
+.flex-grow {
+  flex: 1 0;
+  display: flex;
+  flex-direction: column;
 }

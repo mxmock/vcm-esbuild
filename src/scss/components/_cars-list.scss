@@ -75,34 +75,3 @@
     overflow: hidden;
   }
 }
-
-.slider {
-  &__arrows {
-    --icon-color: var(--break-white);
-    & > div {
-      &:first-child {
-        left: 8px;
-      }
-      &:last-child {
-        right: 8px;
-      }
-      &.hide {
-        opacity: 0;
-      }
-      @include mxn.black-alpha(50%);
-      top: 50%;
-      padding: 8px;
-      display: none;
-      cursor: pointer;
-      position: absolute;
-      border-radius: 50px;
-      transform: translateY(-50%);
-      @media (hover: hover) {
-        display: block;
-      }
-    }
-  }
-  margin: 0 auto;
-  max-width: 1200px;
-  position: relative;
-}
