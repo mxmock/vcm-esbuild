@@ -1,0 +1,76 @@
+@use "../mixin" as mxn;
+
+.textarea {
+  --label-font-style: normal;
+  --label-transform: translateY(8px);
+  &:focus,
+  &.filled,
+  &:focus-within {
+    --label-font-style: italic;
+    --label-transform: translateY(0);
+    --label-font-size: var(--font-size-tiny);
+  }
+  @include mxn.black-alpha(3%);
+  display: grid;
+  // overflow: auto;
+  // max-height: 200px;
+  border-radius: 12px;
+  padding: 0 16px;
+  position: relative;
+
+  z-index: 1;
+  position: relative;
+  box-shadow: var(--input-shadow);
+  border-radius: var(--input-radius);
+  transition: var(--input-transition);
+  // min-height: var(--container-input-height);
+  // max-height: var(--container-input-height);
+}
+.textarea::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-replicated-value) " ";
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+  /* This is how textarea text behaves */
+  white-space: pre-wrap;
+}
+.textarea > textarea {
+  resize: none;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--textarea-bg);
+  box-shadow: none;
+  // box-shadow: 0 0 0 12px var(--textarea-bg),
+  // 0 0 0 14px var(--textarea-border-color);
+}
+/* Identical styling required!! */
+.textarea > textarea,
+.textarea::after {
+  outline: none !important;
+  padding: 0;
+  padding-top: 40px;
+  padding-bottom: 16px;
+  border: none;
+  // font: inherit;
+  /* Place on top of each other */
+  grid-area: 1 / 1 / 2 / 2;
+  color: var(--blue-black);
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.textarea__label {
+  position: absolute;
+
+  top: 8px;
+
+  transition: all 0.2s;
+  will-change: transform;
+  pointer-events: none;
+  color: var(--label-color);
+  left: var(--input-pad-left);
+  transform: var(--label-transform);
+  font-size: var(--label-font-size);
+  font-style: var(--label-font-style);
+}
