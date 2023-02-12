@@ -1,0 +1,191 @@
+@use "../mixin" as mxn;
+
+.input {
+  &:focus,
+  &:focus-within,
+  &.filled {
+    label {
+      --label-transform: translateY(-96%);
+      --label-font-size: var(--font-size-tiny);
+      font-style: italic;
+    }
+  }
+  input,
+  select {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      border: none;
+      -webkit-text-fill-color: var(--blue-black);
+      -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+    &:-webkit-outer-spin-button,
+    &:-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+    &[type="date"] {
+      --input-pad-right: 40px;
+    }
+    &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    border: none;
+    outline: none;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    appearance: none;
+    padding-top: 20px;
+    padding-bottom: 0;
+    font-style: normal;
+    background: transparent;
+    color: var(--blue-black);
+    // transform: translateY(16%);
+    font-family: var(--font-family);
+    font-size: var(--font-size-medium);
+    padding-left: var(--input-pad-left);
+    padding-right: var(--input-pad-right);
+    font-weight: var(--font-weight-medium);
+  }
+  label {
+    top: 50%;
+    position: absolute;
+    transition: all 0.2s;
+    pointer-events: none;
+    will-change: transform;
+    color: var(--label-color);
+    left: var(--input-pad-left);
+    font-size: var(--label-font-size);
+    transform: var(--label-transform);
+  }
+  @include mxn.flex;
+  @include mxn.black-alpha(3%);
+  z-index: 1;
+  position: relative;
+  box-shadow: var(--input-shadow);
+  border-radius: var(--input-radius);
+  transition: var(--input-transition);
+  min-height: var(--container-input-height);
+  max-height: var(--container-input-height);
+}
+
+.calendar-icon {
+  --icon-color: var(--grey-text-2);
+  --icon-size: 16px;
+  pointer-events: none;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+.counter {
+  & + label {
+    left: 50%;
+    transform: translateX(-50%) var(--label-transform);
+  }
+  &__minus,
+  &__plus {
+    --icon-size: 14px;
+    --icon-color: var(--black);
+    --counter-btn-cursor: pointer;
+    --counter-btn-bg: rgba(0, 189, 157, 0.1);
+    &[disabled] {
+      --counter-btn-cursor: default;
+      --counter-btn-bg: transparent;
+      --icon-color: var(--grey-text-2);
+    }
+    top: 50%;
+    z-index: 3;
+    border: none;
+    position: absolute;
+    border-radius: 10px;
+    transform: translateY(-50%);
+    cursor: var(--counter-btn-cursor);
+    background: var(--counter-btn-bg);
+    min-width: var(--counter-btn-size);
+    max-width: var(--counter-btn-size);
+    min-height: var(--counter-btn-size);
+    max-height: var(--counter-btn-size);
+  }
+  &__minus {
+    left: 8px;
+  }
+  &__plus {
+    right: 8px;
+  }
+  z-index: 2;
+  cursor: default;
+  text-align: center;
+}
+
+.radio {
+  --radio-bg: transparent;
+  &__icon {
+    --icon-size: 16px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+  li {
+    &.radio--checked {
+      --radio-bg: rgba(0, 189, 157, 0.1);
+    }
+    &:not(.radio--checked) {
+      input {
+        cursor: pointer;
+      }
+    }
+    &:not(:last-child) {
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+    }
+    &:first-child {
+      border-radius: var(--input-radius) 0 0 var(--input-radius);
+    }
+    &:last-child {
+      border-radius: 0 var(--input-radius) var(--input-radius) 0;
+    }
+
+    .radio__label--hidden {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    flex: 1 0;
+    position: relative;
+    background: var(--radio-bg);
+  }
+}
+
+.select {
+  --input-pad-right: 40px;
+  &__icon {
+    --icon-size: 16px;
+    --icon-color: var(--grey-text-2);
+    top: 50%;
+    right: 8px;
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+  select {
+    cursor: pointer;
+  }
+}
