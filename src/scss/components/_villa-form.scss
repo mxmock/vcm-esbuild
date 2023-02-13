@@ -1,0 +1,62 @@
+@use "../mixin" as mxn;
+
+.villa-form {
+  --form-top: 80px;
+  --form-width: 100%;
+  --form-position: sticky;
+  --form-header-height: 56px;
+  --form-top: calc(100% - var(--form-header-height));
+  --form-height: calc(var(--aside-height) - var(--form-header-height));
+  form {
+    @include mxn.flex("column", "nowrap");
+    gap: 32px;
+    padding: 24px;
+    overflow: auto;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: var(--form-height);
+    min-height: var(--form-height);
+  }
+  &__header {
+    h3 {
+      font-size: var(--font-size-medium);
+      font-weight: var(--font-weight-semi-bold);
+    }
+    @include mxn.flex;
+    cursor: pointer;
+    padding: 0 16px;
+    user-select: none;
+    position: relative;
+    align-items: center;
+    background: var(--emerald);
+    min-height: var(--form-header-height);
+  }
+  &__expand {
+    --icon-size: 14px;
+    --icon-color: var(--black);
+    top: 50%;
+    right: 16px;
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+  &.fullscreen {
+    --form-top: 0;
+    --card-radius: 0;
+    --aside-height: 100%;
+    --form-position: fixed;
+    --form-height: calc(100vh - var(--form-header-height));
+  }
+  left: 0;
+  overflow: hidden;
+  top: var(--form-top);
+  width: var(--form-width);
+  min-width: var(--form-width);
+  max-width: var(--form-width);
+  position: var(--form-position);
+  background: var(--break-white);
+  max-height: var(--aside-height);
+  min-height: var(--aside-height);
+  border-radius: var(--card-radius);
+  transition: var(--cubic-anim) all;
+}
