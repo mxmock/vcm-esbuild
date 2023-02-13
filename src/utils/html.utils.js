@@ -3,7 +3,7 @@ import ReactDOM, { hydrateRoot } from "react-dom/client";
 
 const ENVS = { DEV: "development", PROD: "production" };
 
-const injectInHtml = (id, Component, r = null) => {
+const injectInHtml = (id, Component, r = null, isStatic = true) => {
   const html = getElement(id);
   if (!html) return;
   const data = getHtmlData(html, id);
@@ -11,7 +11,7 @@ const injectInHtml = (id, Component, r = null) => {
   const toInject = !!r
     ? React.createElement(r.Provider, { store: r.store }, reactComponent)
     : reactComponent;
-  handleRoot(html, toInject);
+  handleRoot(html, toInject, isStatic);
 };
 
 const getElement = (id) => document.getElementById(id);
