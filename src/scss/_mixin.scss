@@ -34,6 +34,7 @@
   --border-spacing: 0px;
   --border-style: solid;
   --border-color: var(--black);
+  --border-radius: var(--btn-radius);
   & > * {
     z-index: 3;
     position: relative;
@@ -48,7 +49,7 @@
     right: var(--border-spacing);
     bottom: var(--border-spacing);
     opacity: var(--border-opacity);
-    border-radius: var(--btn-radius);
+    border-radius: var(--border-radius);
     border: var(--border-width) var(--border-style) var(--border-color);
   }
   z-index: 1;
