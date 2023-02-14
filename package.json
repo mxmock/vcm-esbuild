@@ -17,9 +17,7 @@
     "esbuild-plugin-copy-html": "^0.1.2",
     "esbuild-plugin-css-opti": "^0.1.2",
     "esbuild-plugin-react-static": "^0.2.4",
-    "esbuild-plugin-save-server-data": "^0.1.0",
-    "eslint": "^8.34.0",
-    "eslint-plugin-react": "^7.32.2"
+    "esbuild-plugin-save-server-data": "^0.1.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
