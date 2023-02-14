@@ -63,6 +63,12 @@
     font-weight: var(--font-weight-medium);
   }
   label {
+    &.required {
+      &:after {
+        content: "*";
+        color: var(--red);
+      }
+    }
     top: 50%;
     position: absolute;
     transition: all 0.2s;
@@ -125,14 +131,39 @@
     --icon-color: var(--black);
     --counter-btn-cursor: pointer;
     --counter-btn-bg: rgba(0, 189, 157, 0.1);
+    &:hover:not([disabled]):not(:focus) {
+      --border-opacity: 1;
+      --input-shadow: none;
+      --input-transition: all 0.1s 0.04s;
+      &:before {
+        transition: opacity 0.1s 0.04s;
+      }
+    }
+    &:focus,
+    &:focus-within {
+      --border-width: 2px;
+      --input-shadow: none;
+      --border-opacity: 0.6;
+      --border-style: dashed;
+    }
+    &:active {
+      --counter-btn-bg: transparent;
+      opacity: 0.6;
+    }
     &[disabled] {
       --counter-btn-cursor: default;
       --counter-btn-bg: transparent;
       --icon-color: var(--grey-text-2);
     }
+    @include mxn.border;
+    --border-opacity: 0;
+    --border-spacing: 1px;
+    --border-color: var(--emerald);
+    --border-radius: var(--input-radius);
     top: 50%;
     z-index: 3;
     border: none;
+    outline: none;
     position: absolute;
     border-radius: 10px;
     transform: translateY(-50%);

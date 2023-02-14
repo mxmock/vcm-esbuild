@@ -117,7 +117,7 @@ ul {
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-  max-width: 1200px;
+  max-width: 1340px;
 }
 
 .sections {
@@ -152,7 +152,9 @@ ul {
     z-index: 1000;
     min-width: 100%;
     position: sticky;
+    box-shadow: var(--card-shadow);
     max-height: var(--aside-height);
+    border-radius: var(--card-radius);
     bottom: calc((var(--aside-height) - 56px) * -1);
     @media (min-width: 1100px) {
       bottom: initial;

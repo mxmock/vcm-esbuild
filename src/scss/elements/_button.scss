@@ -25,6 +25,8 @@
   }
   span {
     line-height: var(--btn-height);
+    font-family: var(--font-family);
+    font-size: var(--font-size-medium);
     font-weight: var(--font-weight-semi-bold);
   }
   @include mxn.flex;
@@ -32,6 +34,7 @@
   --border-opacity: 0;
   --border-spacing: 2px;
   --border-color: var(--btn-color);
+  border: none;
   cursor: pointer;
   padding: 0 16px;
   white-space: nowrap;

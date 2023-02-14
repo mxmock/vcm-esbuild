@@ -81,10 +81,14 @@
 }
 
 .textarea__label {
-  position: absolute;
-
+  &.required {
+    &:after {
+      content: "*";
+      color: var(--red);
+    }
+  }
   top: 8px;
-
+  position: absolute;
   transition: all 0.2s;
   will-change: transform;
   pointer-events: none;
