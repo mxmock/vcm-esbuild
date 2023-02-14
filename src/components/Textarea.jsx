@@ -19,7 +19,10 @@ const Textarea = (props) => {
         required={!!required}
         onChange={(e) => handleChange(e.target)}
       ></textarea>
-      <label className="textarea__label" htmlFor={id}>
+      <label
+        className={`textarea__label ${required ? "required" : ""}`}
+        htmlFor={id}
+      >
         {label}
       </label>
     </div>
