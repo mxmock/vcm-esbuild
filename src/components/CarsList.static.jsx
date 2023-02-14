@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "./Slider";
 import Feature from "./Feature";
-import URL from "../constants/api-url.const";
 import carsData from "../data/cars.data.json";
+import { ASSETS_URL } from "../constants/api-url.const";
 
 const CARS = carsData;
 const LINK_DESCRIPTION = `Lien vers la voiture`;
@@ -44,7 +44,7 @@ const getImageHtml = (car) => {
 const getMainImg = (car) => {
   const filter = (d) => d.name.includes("avant_1");
   const doc = car.documents.find(filter);
-  return doc ? `${URL}/${doc.path}` : "";
+  return doc ? `${ASSETS_URL}/${doc.path}` : "";
 };
 
 const getCardHtml = (car) => (

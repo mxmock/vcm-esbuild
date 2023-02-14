@@ -1,7 +1,7 @@
 import Slider from "./Slider";
 import React, { useEffect } from "react";
-import URL from "../constants/api-url.const";
 import villasData from "../data/villas.data.json";
+import { ASSETS_URL } from "../constants/api-url.const";
 
 const getVilla = (villas, id) => villas.find((v) => v.id === id) || null;
 
@@ -24,7 +24,7 @@ const VillaGallery = ({ data }) => {
               decoding="async"
               alt={i.description}
               title={i.description}
-              src={`${URL}/${i.path}`}
+              src={`${ASSETS_URL}/${i.path}`}
               loading={index >= 2 ? "lazy" : "eager"}
             />
           </div>

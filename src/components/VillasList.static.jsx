@@ -1,7 +1,7 @@
 import React from "react";
 import Feature from "./Feature";
-import URL from "../constants/api-url.const";
 import villasData from "../data/villas.data.json";
+import { ASSETS_URL } from "../constants/api-url.const";
 
 const LINK_DESCRIPTION = `Lien vers la villa`;
 const IMG_DESCRIPTION = `Photo principale de la villa`;
@@ -48,7 +48,7 @@ const getImageHtml = (villa, index) => {
 const getMainImg = (villa) => {
   const f = (d) => d.name.includes("ext_1") || d.name.includes("debordement");
   const doc = villa.documents.find(f);
-  return doc ? `${URL}/${doc.path}` : "";
+  return doc ? `${ASSETS_URL}/${doc.path}` : "";
 };
 
 const getCardHtml = (villa) => (
