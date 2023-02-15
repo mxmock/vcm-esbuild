@@ -29,7 +29,6 @@
   }
   & > ul {
     & > li {
-      user-select: none;
       scroll-snap-align: center;
       min-width: var(--slider-element-width, initial);
     }
@@ -38,14 +37,14 @@
     overflow: auto;
     padding: 24px;
     margin-top: -24px;
-    user-select: none;
-    pointer-events: none;
     scroll-behavior: smooth;
     will-change: scroll-position;
     scroll-snap-type: x mandatory;
 
     @media (hover: hover) {
       overflow: hidden;
+      user-select: none;
+      pointer-events: none;
     }
   }
   width: 100%;
