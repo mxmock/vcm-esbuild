@@ -7,13 +7,12 @@
   --form-btn-height: 56px;
   --form-header-height: 56px;
   --form-top: calc(100% - var(--form-header-height));
-  --form-height: calc(
-    var(--aside-height) - var(--form-header-height) - var(--form-btn-height)
-  );
   form {
-    gap: 32px;
+    @include mxn.flex("column", "nowrap");
     min-width: 100%;
     max-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
   }
   &__header {
     h3 {
@@ -66,8 +65,7 @@
     padding: 24px;
     overflow: auto;
     padding-bottom: 52px;
-    max-height: var(--form-height);
-    min-height: var(--form-height);
+    max-height: calc(100% - var(--form-header-height) - var(--form-btn-height));
   }
   &__btn {
     button {
@@ -95,15 +93,13 @@
     pointer-events: none;
     transform: translateY(-50%);
   }
-  &.fullscreen {
+  &--fullscreen {
     --form-top: 0;
     --card-radius: 0;
     --aside-height: 100%;
     --form-position: fixed;
-    --form-height: calc(
-      100vh - var(--form-header-height) - var(--form-btn-height)
-    );
   }
+  @include mxn.flex("column", "nowrap");
   left: 0;
   overflow: hidden;
   top: var(--form-top);
@@ -113,7 +109,6 @@
   position: var(--form-position);
   background: var(--break-white);
   max-height: var(--aside-height);
-  min-height: var(--aside-height);
   border-radius: var(--card-radius);
   transition: var(--cubic-anim) all;
 }

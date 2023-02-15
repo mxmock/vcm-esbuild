@@ -9,6 +9,7 @@ import DateInput from "./DateInput";
 import NumberInput from "./NumberInput";
 import villasData from "../data/villas.data.json";
 import { useDispatch, useSelector } from "react-redux";
+import toggleFullscreen from "../utils/fullscreen.utils";
 import { COUNTRIES, GENDERS } from "../constants/form.const";
 
 import {
@@ -35,6 +36,7 @@ const VillaForm = ({ data }) => {
   const handleFullscreen = (posY) => {
     setAsideTop(`${posY}px`);
     setTimeout(() => {
+      toggleFullscreen(!fullscreen);
       setFullscreen(!fullscreen);
       setAsideTop(fullscreen ? "initial" : "0px");
     }, 10);
@@ -45,11 +47,9 @@ const VillaForm = ({ data }) => {
 
   const form = useSelector((store) => store.villaFormReducer);
 
-  console.log(villa);
-
   return (
     <div
-      className={`villa-form ${fullscreen ? "fullscreen" : ""}`}
+      className={`villa-form ${fullscreen ? "villa-form--fullscreen" : ""}`}
       style={{ ["--form-top"]: `${asideTop}` }}
     >
       <div
