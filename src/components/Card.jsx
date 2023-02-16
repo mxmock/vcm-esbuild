@@ -1,7 +1,7 @@
 import Icon from "./Icon";
 import React, { useRef } from "react";
 
-const Card = ({ title, children }) => {
+const Card = ({ title, readMore, children }) => {
   const cardBody = useRef(null);
 
   const handleExtend = (extend) => {
@@ -11,7 +11,9 @@ const Card = ({ title, children }) => {
   };
 
   const [extended, setExtended] = React.useState(false);
-  const [cardHeight, setCardHeight] = React.useState("200px");
+  const [cardHeight, setCardHeight] = React.useState(
+    !!readMore?.length ? "200px" : "initial"
+  );
 
   return (
     <div className={`card ${extended ? "card--extended" : ""}`}>
@@ -27,18 +29,20 @@ const Card = ({ title, children }) => {
         {children}
       </div>
 
-      <div className="card__read-more">
-        <button onClick={() => handleExtend(extended)}>
-          <span>{extended ? "voir moins" : "voir plus"}</span>
-          <Icon
-            name={
-              extended
-                ? "arrow-ios-upward-outline"
-                : "arrow-ios-downward-outline"
-            }
-          />
-        </button>
-      </div>
+      {!!readMore?.length && (
+        <div className="card__read-more">
+          <button onClick={() => handleExtend(extended)}>
+            <span>{extended ? "voir moins" : readMore}</span>
+            <Icon
+              name={
+                extended
+                  ? "arrow-ios-upward-outline"
+                  : "arrow-ios-downward-outline"
+              }
+            />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
