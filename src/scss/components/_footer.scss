@@ -14,7 +14,11 @@
   }
   p {
     text-align: center;
+    white-space: nowrap;
     font-size: var(--font-size-tiny);
+  }
+  &__address {
+    @include mxn.flex("column", "nowrap");
   }
   @include mxn.flex;
   padding-top: 14vmin;
