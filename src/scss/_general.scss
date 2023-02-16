@@ -41,10 +41,10 @@ html {
 body {
   line-height: 1.618;
   color: var(--black);
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.03rem;
   background: var(--white);
   font-family: var(--font-family);
-  font-size: calc(12px + 0.6vmin);
+  font-size: var(--font-size-medium);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-weight: var(--font-weight-regular);
