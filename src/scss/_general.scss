@@ -157,7 +157,6 @@ ul {
   .villa-stuff {
     @include mxn.grow(2);
     height: 3000px;
-    background: indianred;
   }
   .form-aside {
     @include mxn.grow;
@@ -177,5 +176,7 @@ ul {
   }
   @include mxn.flex;
   gap: 16px;
+  margin-top: 64px;
+  margin-bottom: 64px;
   position: relative;
 }

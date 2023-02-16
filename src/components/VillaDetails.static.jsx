@@ -1,44 +1,49 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import villasData from "../data/villas.data.json";
-import { increment, decrement } from "../redux/counter/counter.slice";
+import Card from "./Card";
+import Feature from "./Feature";
 
 const VillaDetails = ({ data }) => {
-  const dispatch = useDispatch();
-
-  const counter = useSelector((store) => store.counterReducer.value);
-
-  const villa = villasData.find((v) => v.id === data.id);
-
-  const handleDecrement = () => {
-    dispatch(decrement());
-  };
-
-  const handleIncrement = () => {
-    dispatch(increment());
-  };
+  const [villa, setVilla] = React.useState(null);
+  const [mainFeatures, setMainFeatures] = React.useState([]);
 
   React.useEffect(() => {
-    console.log(data);
-    console.log(villasData);
-  }, []);
+    if (!villasData || !data) return;
+    const villa = villasData.find((v) => v.id === data.id);
+    setVilla(villa);
+    setMainFeatures(
+      villa.features
+        .filter((f) => !!f.icon)
+        .map((f) => ({
+          id: f.id,
+          icon: f.icon,
+          value: f.value,
+          labelFR: f.labelFR,
+        }))
+    );
+    console.log(villa);
+  }, [villasData, data]);
 
   return (
     <>
-      <div className="villa-detail">
-        <h1>{villa.name}</h1>
-      </div>
+      {villa && (
+        <div className="villa-details">
+          <ul className="villa-details__main-features">
+            {mainFeatures.map((f) => (
+              <li key={f.id}>
+                <Feature feature={f} />
+              </li>
+            ))}
+          </ul>
 
-      <button type="button" onClick={handleIncrement}>
-        increment
-      </button>
-      <button type="button" onClick={handleDecrement}>
-        decrement
-      </button>
-
-      <div>
-        <p>counter value : {counter}</p>
-      </div>
+          <Card title={"Description"}>
+            <div
+              className="villa-details__text"
+              dangerouslySetInnerHTML={{ __html: villa.descriptionFR }}
+            ></div>
+          </Card>
+        </div>
+      )}
     </>
   );
 };

@@ -1,0 +1,30 @@
+@use "../mixin" as mxn;
+
+.villa-details {
+  --main-features-width: 100%;
+  &__main-features {
+    li {
+      @include mxn.grow;
+      background: var(--break-white);
+      border-radius: var(--card-radius);
+      min-width: var(--main-features-width);
+    }
+    @include mxn.flex;
+    gap: 16px;
+  }
+  &__text {
+    p {
+      padding: 0 16px;
+    }
+    @include mxn.flex("column", "nowrap");
+    gap: 32px;
+  }
+  @include mxn.flex("column", "nowrap");
+  gap: 40px;
+  @media (min-width: 462px) {
+    --main-features-width: 45%;
+  }
+  @media (min-width: 700px) {
+    --main-features-width: 30%;
+  }
+}

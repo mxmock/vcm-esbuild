@@ -12,6 +12,7 @@
 @use "scss/elements/feature";
 @use "scss/elements/textarea";
 
+@use "scss/components/card";
 @use "scss/components/header";
 @use "scss/components/footer";
 @use "scss/components/slider";
@@ -19,4 +20,5 @@
 @use "scss/components/navigation";
 @use "scss/components/villa-form";
 @use "scss/components/villas-list";
+@use "scss/components/villa-details";
 @use "scss/components/villa-gallery";
