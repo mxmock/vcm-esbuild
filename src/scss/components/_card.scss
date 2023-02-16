@@ -1,0 +1,82 @@
+@use "../mixin" as mxn;
+
+.card {
+  --card-body-padding: 0;
+  --card-before-content: "";
+  --card-title-shadow: none;
+  --card-title-position: static;
+  --card-read-more-shadow: none;
+  &--extended {
+    --card-before-content: none;
+    --card-body-padding: 16px 0;
+    --card-title-position: sticky;
+    --card-title-shadow: 0 8px 8px rgb(0 0 0 / 8%);
+    --card-read-more-shadow: 0 -8px 8px rgb(0 0 0 / 8%);
+  }
+  &__title {
+    h2 {
+      color: var(--blue-black);
+      font-size: var(--font-size-large);
+      font-weight: var(--font-weight-semi-bold);
+    }
+    @include mxn.flex;
+    top: 0;
+    z-index: 4;
+    padding: 0 16px;
+    min-height: 64px;
+    align-items: center;
+    background: var(--break-white);
+    position: var(--card-title-position);
+    box-shadow: var(--card-title-shadow);
+    border-radius: var(--card-radius) var(--card-radius) 0 0;
+  }
+  &__body {
+    overflow: hidden;
+    transition: var(--cubic-anim);
+    padding: var(--card-body-padding);
+    max-height: var(--card-body-height);
+  }
+  &__read-more {
+    &:before {
+      left: 0;
+      bottom: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100px;
+      position: absolute;
+      pointer-events: none;
+      content: var(--card-before-content);
+      border-radius: 0 0 var(--card-radius) var(--card-radius);
+      background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #fff 46.35%);
+    }
+    button {
+      --icon-size: 12px;
+      --icon-color: var(--emerald);
+      span {
+        color: var(--emerald);
+        font-family: var(--font-family);
+        font-size: var(--font-size-tiny);
+        font-weight: var(--font-weight-semi-bold);
+      }
+      @include mxn.flex;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+    @include mxn.flex;
+    z-index: 2;
+    padding: 0 16px;
+    min-height: 56px;
+    position: relative;
+    justify-content: flex-end;
+    box-shadow: var(--card-read-more-shadow);
+  }
+  @include mxn.flex("column", "nowrap");
+  background: var(--break-white);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-radius);
+}
