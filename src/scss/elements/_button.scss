@@ -37,6 +37,7 @@
   border: none;
   cursor: pointer;
   padding: 0 16px;
+  user-select: none;
   white-space: nowrap;
   text-decoration: none;
   color: var(--btn-color);
