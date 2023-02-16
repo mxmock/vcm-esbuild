@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self';script-src 'self' 'unsafe-inline'; img-src https://api.villascieletmer.fr/assets/"
+      content="default-src 'self';script-src 'self' 'unsafe-inline'; img-src https://api.villascieletmer.fr/assets/ 'self'; connect-src https://api.villascieletmer.fr/ 'self'"
     />
     <meta name="description" content="Location de Villas en Guadeloupe" />
     <meta name="keywords" content="Location, Villas, Guadeloupe" />
@@ -19,6 +19,40 @@
   <body>
     <header class="header" data-header='{"path":"../"}' id="header"></header>
 
-    <div data-villaDetails='{"id":16}' id="villaDetails"></div>
+    <main class="scrollable">
+      <article class="bg-effect-details">
+        <div class="container main-title">
+          <div class="section-title main-title__h1">
+            <h1>Villa La Coulée</h1>
+          </div>
+
+          <div class="main-title__home">
+            <div class="ock-icon">
+              <span>
+                <i class="ock-arrow-back-outline"></i>
+              </span>
+            </div>
+            <a href="../index.html" title="Retour vers l'accueil"
+              >Retour accueil</a
+            >
+          </div>
+        </div>
+
+        <section data-villaGallery='{"id":16}' id="villaGallery"></section>
+
+        <div class="villa-stuff-display container">
+          <div class="villa-stuff">
+            <section data-villaDetails='{"id":16}' id="villaDetails"></section>
+          </div>
+          <aside
+            id="villaForm"
+            class="form-aside"
+            data-villaForm='{"id":16}'
+          ></aside>
+        </div>
+      </article>
+
+      <footer id="footer"></footer>
+    </main>
   </body>
 </html>
