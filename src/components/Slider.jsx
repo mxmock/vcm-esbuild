@@ -15,7 +15,7 @@ const Slider = ({ children }) => {
     slider.current.scrollLeft += elWidth * direction;
   };
 
-  /* TODO: Buttons for arrows */
+  /* TODO: Buttons for arrows instead div */
   const getArrowsHtml = () => (
     <div className="slider__arrows">
       <div

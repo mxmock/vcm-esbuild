@@ -7,7 +7,7 @@ import Header from "./components/Header.static";
 import CarsList from "./components/CarsList.static";
 import VillasList from "./components/VillasList.static";
 import VillaGallery from "./components/VillaGallery.static";
-import VillaDetails from "./components/VillaDetails.static#provider";
+import VillaDetails from "./components/VillaDetails.static";
 
 const main = () => {
   console.log("Environnement:", process?.env?.NODE_ENV);
@@ -17,7 +17,7 @@ const main = () => {
   injectInHtml("carsList", CarsList);
   injectInHtml("villasList", VillasList);
   injectInHtml("villaGallery", VillaGallery);
-  injectInHtml("villaDetails", VillaDetails, { store, Provider });
+  injectInHtml("villaDetails", VillaDetails);
   injectInHtml("villaForm", VillaForm, { store, Provider }, false);
 };
 
