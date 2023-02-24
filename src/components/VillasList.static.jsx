@@ -32,9 +32,7 @@ const getImageHtml = (villa, index) => {
         <img
           loading={index >= 2 ? "lazy" : "eager"}
           decoding="async"
-          src={
-            "https://furansujapon.com/wp-content/uploads/2022/09/Great-Teacher-Onizuka.jpg"
-          }
+          src={"https://furansujapon.com/wp-content/uploads/2022/09/Great-Teacher-Onizuka.jpg"}
           srcSet={`${mainImage} 480w, ${mainImage} 1000w`}
           sizes="50vw"
           alt={`${IMG_DESCRIPTION} ${villa.name}`}

@@ -13,7 +13,10 @@ const Select = (props) => {
         value={defaultValue || value || options[0].value}
       >
         {options.map((o) => (
-          <option key={o.value} value={o.value}>
+          <option
+            key={o.value}
+            value={o.value}
+          >
             {o.label}
           </option>
         ))}

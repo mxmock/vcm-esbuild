@@ -2,31 +2,25 @@ import { getRequest } from "../../api/api";
 import { getInitVillaForm } from "../../constants/form.const";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const getTodos = createAsyncThunk(
-  "todos/getAll",
-  async (_, thunkApi) => {
-    const { fulfillWithValue, rejectWithValue } = thunkApi;
-    const { status, result, error } = await getRequest("/allVillas");
+export const getTodos = createAsyncThunk("todos/getAll", async (_, thunkApi) => {
+  const { fulfillWithValue, rejectWithValue } = thunkApi;
+  const { status, result, error } = await getRequest("/allVillas");
 
-    return error
-      ? rejectWithValue(`Cannot get todos - Error status ${status} - ${error}`)
-      : fulfillWithValue(result);
-  }
-);
+  return error
+    ? rejectWithValue(`Cannot get todos - Error status ${status} - ${error}`)
+    : fulfillWithValue(result);
+});
 
-export const villaBooking = createAsyncThunk(
-  "villa/booking",
-  async (form, thunkApi) => {
-    const { fulfillWithValue, rejectWithValue } = thunkApi;
+export const villaBooking = createAsyncThunk("villa/booking", async (form, thunkApi) => {
+  const { fulfillWithValue, rejectWithValue } = thunkApi;
 
-    console.log(formatBooking(form));
+  console.log(formatBooking(form));
 
-    // const { status, result, error } = await getRequest("/allVillas");
-    // return error
-    //   ? rejectWithValue(`Cannot get todos - Error status ${status} - ${error}`)
-    //   : fulfillWithValue(result);
-  }
-);
+  // const { status, result, error } = await getRequest("/allVillas");
+  // return error
+  //   ? rejectWithValue(`Cannot get todos - Error status ${status} - ${error}`)
+  //   : fulfillWithValue(result);
+});
 
 const formatBooking = (form) => {
   return {

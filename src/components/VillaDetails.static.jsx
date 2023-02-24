@@ -16,8 +16,7 @@ const mapFeature = (f) => ({
 
 const mapRoom = (room) => {
   const beds = Object.keys(room).reduce(
-    (arr, key) =>
-      key.includes("bed") && !!room[key] ? [...arr, room[key]] : [...arr],
+    (arr, key) => (key.includes("bed") && !!room[key] ? [...arr, room[key]] : [...arr]),
     []
   );
   return {
@@ -43,10 +42,8 @@ const initFeatures = {
 
 const VillaDetails = ({ data }) => {
   const [villa, setVilla] = React.useState(null);
-  const [
-    { rooms, stuff, around, services, globalView, mainFeatures, additionnals },
-    setFeatures,
-  ] = React.useState(initFeatures);
+  const [{ rooms, stuff, around, services, globalView, mainFeatures, additionnals }, setFeatures] =
+    React.useState(initFeatures);
 
   React.useEffect(() => {
     if (!villasData || !data?.id) return;
@@ -77,7 +74,10 @@ const VillaDetails = ({ data }) => {
             ))}
           </ul>
 
-          <Card readMore="lire la suite" title={"Description"}>
+          <Card
+            readMore="lire la suite"
+            title={"Description"}
+          >
             <div
               className="villa-details__text"
               dangerouslySetInnerHTML={{ __html: villa.descriptionFR }}
@@ -104,7 +104,10 @@ const VillaDetails = ({ data }) => {
             </ul>
           </Card>
 
-          <Card readMore="voir tous les équipements" title={"Équipement"}>
+          <Card
+            readMore="voir tous les équipements"
+            title={"Équipement"}
+          >
             <ul className="villa-details__columns">
               {stuff.map((f) => (
                 <li key={f.id}>
@@ -120,11 +123,17 @@ const VillaDetails = ({ data }) => {
           <Card title="Informations sur les chambres">
             <ul className="villa-details__columns">
               {rooms.map((r) => (
-                <li key={r.id} className="villa-details__room">
+                <li
+                  key={r.id}
+                  className="villa-details__room"
+                >
                   <h4>{r.label ? r.label : "Chambre classique"}</h4>
                   <ul>
                     {r.beds.map((b, i) => (
-                      <li key={i} className="villa-details__second-features">
+                      <li
+                        key={i}
+                        className="villa-details__second-features"
+                      >
                         <Icon name="bed-simple-outline" />
                         <span>Lit {b}</span>
                       </li>
@@ -159,7 +168,10 @@ const VillaDetails = ({ data }) => {
             </ul>
           </Card>
 
-          <Card readMore="voir tous les services" title={"Services inclus"}>
+          <Card
+            readMore="voir tous les services"
+            title={"Services inclus"}
+          >
             <ul className="villa-details__columns">
               {services.map((f) => (
                 <li key={f.id}>

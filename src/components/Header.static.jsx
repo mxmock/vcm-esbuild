@@ -9,7 +9,10 @@ const Header = ({ data }) => {
   return (
     <div className="container">
       <div className="header__logo">
-        <a title="Lien vers la page d'accueil" href={`${data.path}index.html`}>
+        <a
+          title="Lien vers la page d'accueil"
+          href={`${data.path}index.html`}
+        >
           <MainLogo />
         </a>
       </div>

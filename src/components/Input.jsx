@@ -14,7 +14,10 @@ const Input = (props) => {
         pattern={pattern || null}
         onChange={(e) => onChange(e.target.value)}
       />
-      <label className={`${required ? "required" : ""}`} htmlFor={id}>
+      <label
+        className={`${required ? "required" : ""}`}
+        htmlFor={id}
+      >
         {label}
       </label>
     </div>

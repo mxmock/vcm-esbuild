@@ -18,7 +18,10 @@ const VillaGallery = ({ data }) => {
   return (
     <Slider>
       {images.map((i, index) => (
-        <li className="gallery" key={i.id}>
+        <li
+          className="gallery"
+          key={i.id}
+        >
           <div className="adaptive-img-cover gallery__image">
             <img
               decoding="async"

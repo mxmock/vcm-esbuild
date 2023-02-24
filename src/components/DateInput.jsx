@@ -16,7 +16,10 @@ const DateInput = (props) => {
         required={!!required}
         onChange={(e) => onChange(e.target.value)}
       />
-      <label className={`${required ? "required" : ""}`} htmlFor={id}>
+      <label
+        className={`${required ? "required" : ""}`}
+        htmlFor={id}
+      >
         {label}
       </label>
       <div className="calendar-icon">

@@ -35,9 +35,7 @@ const Slider = ({ children }) => {
 
   const [maxScroll, setMaxScroll] = React.useState(0);
   const [scrollPosition, setScrollPosition] = React.useState(0);
-  const [sliderDirection, setSliderDirection] = React.useState(
-    SLIDER_DIRECTION.RIGHT
-  );
+  const [sliderDirection, setSliderDirection] = React.useState(SLIDER_DIRECTION.RIGHT);
 
   // const [clearInterval, startInverval] = useInterval(
   //   () => moveSlider(carsList.current, sliderDirection),

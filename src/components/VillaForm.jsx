@@ -13,10 +13,7 @@ import villasData from "../data/villas.data.json";
 import toggleFullscreen from "../utils/fullscreen.utils";
 import { COUNTRIES, GENDERS } from "../constants/form.const";
 
-import {
-  villaBooking,
-  villaFormUpdate,
-} from "../redux/villa-form/villa-form.slice";
+import { villaBooking, villaFormUpdate } from "../redux/villa-form/villa-form.slice";
 
 const dispatch = store.dispatch;
 
@@ -50,9 +47,7 @@ const VillaForm = ({ data }) => {
     if (!villasData || !data) return;
     const villa = villasData.find((v) => v.id === data.id);
     setVilla(villa);
-    setNbrOfPersons(
-      villa.features.find((f) => f.labelENG.includes("persons")).value
-    );
+    setNbrOfPersons(villa.features.find((f) => f.labelENG.includes("persons")).value);
   }, [villasData, data]);
 
   return (
@@ -68,9 +63,7 @@ const VillaForm = ({ data }) => {
           >
             <h3>À partir de {villa.price}€ par nuit</h3>
             <div className="villa-form__expand">
-              <Icon
-                name={`${fullscreen ? "close-outline" : "expand-outline"}`}
-              />
+              <Icon name={`${fullscreen ? "close-outline" : "expand-outline"}`} />
             </div>
           </div>
 
@@ -206,7 +199,10 @@ const VillaForm = ({ data }) => {
             </div>
 
             <div className="villa-form__btn">
-              <button className="button" type="submit">
+              <button
+                className="button"
+                type="submit"
+              >
                 <span>Demande de réservation</span>
               </button>
             </div>
