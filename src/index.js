@@ -12,6 +12,7 @@ import VillaDetails from "./components/VillaDetails.static";
 const main = () => {
   console.log("Environnement:", process?.env?.NODE_ENV);
 
+  calcSize();
   injectInHtml("footer", Footer);
   injectInHtml("header", Header);
   injectInHtml("carsList", CarsList);
@@ -21,4 +22,11 @@ const main = () => {
   injectInHtml("villaForm", VillaForm, { store, Provider }, false);
 };
 
+const calcSize = () => {
+  console.log("window resize");
+  document.body.style.setProperty("--100vh", `${window.innerHeight}px`);
+  document.body.style.setProperty("--100vw", `${window.innerWidth}px`);
+};
+
 window.addEventListener("load", main);
+window.addEventListener("resize", calcSize);

@@ -127,6 +127,11 @@ ul {
   flex-direction: column;
 }
 
+.hide {
+  border: none;
+  transform: scale(0);
+}
+
 .fullscreen {
   top: 0;
   left: 0;

@@ -1,0 +1,46 @@
+@use "../mixin" as mxn;
+
+@keyframes appear {
+  from {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.modal {
+  --modal-padding: 16px;
+  --modal-card-width: calc(100% - var(--modal-padding));
+  &__card {
+    min-width: var(--modal-card-width);
+    left: 50%;
+    top: var(--modal-padding);
+    max-height: calc(100% - var(--modal-padding));
+
+    transform-origin: var(--left-origin) var(--top-origin);
+    transform-box: fill-box;
+
+    position: fixed;
+    overflow: hidden;
+    background: var(--break-white);
+    border-radius: var(--card-radius);
+    box-shadow: 0px 0px 40px rgb(0 0 0 / 45%);
+    animation: var(--cubic-anim-slow) appear both !important;
+  }
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  position: fixed;
+  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.4);
+
+  @media (min-width: 1000px) {
+    --modal-padding: 96px;
+    --modal-card-width: 992px;
+  }
+}
