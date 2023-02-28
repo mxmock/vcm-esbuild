@@ -13,6 +13,7 @@
 
 .modal {
   --modal-padding: 16px;
+  --modal-radius: var(--card-radius);
   --modal-card-width: calc(100% - var(--modal-padding));
   &__card {
     min-width: var(--modal-card-width);
@@ -26,7 +27,7 @@
     position: fixed;
     overflow: hidden;
     background: var(--break-white);
-    border-radius: var(--card-radius);
+    border-radius: var(--modal-radius);
     box-shadow: 0px 0px 40px rgb(0 0 0 / 45%);
     animation: var(--cubic-anim-slow) appear both !important;
   }
@@ -42,5 +43,14 @@
   @media (min-width: 1000px) {
     --modal-padding: 96px;
     --modal-card-width: 992px;
+  }
+
+  &--fullscreen {
+    --modal-radius: 0px;
+    --modal-padding: 0px;
+    --modal-card-width: 100%;
+    .modal__card {
+      min-height: 100%;
+    }
   }
 }
