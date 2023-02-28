@@ -77,21 +77,18 @@
       --border-opacity: 0 !important;
       &:hover,
       &:focus {
-        box-shadow: inset 0 -3px 0 var(--break-white),
-          inset 0 -7px 0 var(--blue-black);
+        box-shadow: inset 0 -3px 0 var(--break-white), inset 0 -7px 0 var(--blue-black);
       }
       padding: 0 4px;
       border-radius: 0;
       transition: var(--cubic-anim);
-      box-shadow: inset 0 -3px 0 var(--break-white),
-        inset 0 -5px 0 var(--blue-black);
+      box-shadow: inset 0 -3px 0 var(--break-white), inset 0 -5px 0 var(--blue-black);
     }
     @include mxn.flex;
     @include mxn.center;
     padding: 0 16px;
     min-height: var(--form-btn-height);
-    box-shadow: 0px 24.12px 48.24px rgba(69, 90, 100, 0.4),
-      inset 0 1px 0 rgba(137, 138, 139, 0.4);
+    box-shadow: 0px 24.12px 48.24px rgba(69, 90, 100, 0.4), inset 0 1px 0 rgba(137, 138, 139, 0.4);
   }
   &__infos {
     & > span {
@@ -109,10 +106,7 @@
     text-shadow: var(--text-shadow);
   }
   &--fullscreen {
-    --form-top: 0;
-    --card-radius: 0;
-    --aside-height: 100%;
-    --form-position: fixed;
+    --aside-height: calc(var(--100vh) - var(--modal-padding) * 2);
   }
   @include mxn.flex("column", "nowrap");
   left: 0;
