@@ -19,7 +19,7 @@
     min-width: var(--modal-card-width);
     left: 50%;
     top: var(--modal-padding);
-    max-height: calc(100% - var(--modal-padding));
+    max-height: calc(100% - var(--modal-padding) * 2);
 
     transform-origin: var(--left-origin) var(--top-origin);
     transform-box: fill-box;
