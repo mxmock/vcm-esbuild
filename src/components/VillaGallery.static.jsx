@@ -1,5 +1,6 @@
+import React from "react";
+import Modal from "./Modal";
 import Slider from "./Slider";
-import React, { useEffect } from "react";
 import villasData from "../data/villas.data.json";
 import { ASSETS_URL } from "../constants/api-url.const";
 
@@ -11,29 +12,64 @@ const getImages = (id) =>
 const VillaGallery = ({ data }) => {
   const images = getImages(data.id);
 
-  // useEffect(() => {
-  //   console.log(images);
-  // }, [images]);
+  const unzoom = () => {
+    setModalPosition(null);
+    setSelectedImg(null);
+  };
+
+  const zoom = (image, x, y) => {
+    setModalPosition({ x, y });
+    setSelectedImg(image);
+  };
+
+  const [selectedImg, setSelectedImg] = React.useState(null);
+  const [modalPosition, setModalPosition] = React.useState(null);
 
   return (
-    <Slider>
-      {images.map((i, index) => (
-        <li
-          className="gallery"
-          key={i.id}
+    <>
+      {!!selectedImg && !!modalPosition && (
+        <Modal
+          onClose={unzoom}
+          fullscreen={true}
+          position={modalPosition}
         >
-          <div className="adaptive-img-cover gallery__image">
+          <div
+            onClick={() => unzoom()}
+            className="adaptive-img-contain gallery__fullscreen"
+          >
             <img
               decoding="async"
-              alt={i.description}
-              title={i.description}
-              src={`${ASSETS_URL}/${i.path}`}
-              loading={index >= 2 ? "lazy" : "eager"}
+              loading={"eager"}
+              alt={selectedImg.description}
+              title={selectedImg.description}
+              src={`${ASSETS_URL}${selectedImg.path}`}
             />
           </div>
-        </li>
-      ))}
-    </Slider>
+        </Modal>
+      )}
+
+      <Slider>
+        {images.map((i, index) => (
+          <li
+            key={i.id}
+            className="gallery"
+          >
+            <div
+              className="adaptive-img-cover gallery__image"
+              onClick={(e) => zoom(i, e.clientX, e.clientY)}
+            >
+              <img
+                decoding="async"
+                alt={i.description}
+                title={i.description}
+                src={`${ASSETS_URL}${i.path}`}
+                loading={index >= 2 ? "lazy" : "eager"}
+              />
+            </div>
+          </li>
+        ))}
+      </Slider>
+    </>
   );
 };
 

@@ -4,23 +4,21 @@ import FocusTrapper from "./FocusTrapper";
 import { useKeyPress } from "../hooks/keypress.hook";
 
 const Modal = (props) => {
-  const { children, position, verticalCenter, onClose } = props;
+  const { children, position, fullscreen, onClose } = props;
 
   const [modalPosition, setModalPosition] = React.useState({ x: `50%`, y: `50%` });
 
   useKeyPress("Escape", onClose);
 
   React.useEffect(() => {
-    console.log("load modal");
     if (!children || !position) return;
-    console.log("calc position");
     const y = `calc(${position.y}px - var(--modal-padding))`;
     const x = `calc(50% + ${position.x}px - var(--100vw) / 2)`;
     setModalPosition({ x, y });
   }, [children, position]);
 
   const modalHtml = (
-    <div className={`modal ${verticalCenter ? "vertical-center" : ""}`}>
+    <div className={`modal ${fullscreen ? "modal--fullscreen" : ""}`}>
       <FocusTrapper>
         <div
           role="dialog"
