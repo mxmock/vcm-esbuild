@@ -71,6 +71,10 @@
     z-index: 1;
     animation: shimmer 1s infinite;
   }
+  & > * {
+    will-change: transform;
+  }
   overflow: hidden;
   position: relative;
+  will-change: transform;
 }
