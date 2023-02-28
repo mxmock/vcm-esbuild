@@ -6,6 +6,7 @@
   --gallery-image-height: 64vmin;
   &__image {
     @include mxn.placeholder;
+    cursor: pointer;
     background: var(--light-grey);
     box-shadow: var(--card-shadow);
     border-radius: var(--card-radius);
@@ -16,6 +17,10 @@
     img {
       z-index: 2;
     }
+  }
+  &__fullscreen {
+    cursor: pointer;
+    min-height: var(--100vh);
   }
   @media (min-height: 1000px) {
     --gallery-image-height: 48vmin;
