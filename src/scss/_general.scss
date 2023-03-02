@@ -187,3 +187,35 @@ ul {
   margin-bottom: 16vmin;
   gap: var(--villa-stuff-gap);
 }
+
+/* TODO: Same as villa-stuff */
+.car-stuff-display {
+  --villa-stuff-gap: 40px;
+  --villa-aside-width: 100%;
+  --villa-aside-bottom: calc((var(--aside-height) - 56px) * -1);
+  .car-stuff {
+    @include mxn.grow(2);
+  }
+  .form-aside {
+    @include mxn.grow;
+    @include mxn.flex("column", "nowrap");
+    top: 16px;
+    z-index: 1000;
+    position: sticky;
+    box-shadow: var(--card-shadow);
+    max-height: var(--aside-height);
+    border-radius: var(--card-radius);
+    bottom: var(--villa-aside-bottom);
+    min-width: var(--villa-aside-width);
+  }
+  @media (min-width: 1100px) {
+    --villa-stuff-gap: 16px;
+    --villa-aside-width: initial;
+    --villa-aside-bottom: initial;
+  }
+  @include mxn.flex;
+  margin-top: 64px;
+  position: relative;
+  margin-bottom: 16vmin;
+  gap: var(--villa-stuff-gap);
+}
