@@ -73,4 +73,16 @@ const getInitVillaForm = () => ({
   message: "",
 });
 
-export { getInitVillaForm, GENDERS, COUNTRIES };
+const getInitCarForm = () => ({
+  startDate: getToday(),
+  endDate: getToday(),
+  gender: "male",
+  name: "",
+  firstName: "",
+  mail: "",
+  phone: "",
+  country: "FRANCE",
+  message: "",
+});
+
+export { getInitVillaForm, getInitCarForm, GENDERS, COUNTRIES };
