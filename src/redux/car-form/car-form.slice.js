@@ -26,7 +26,6 @@ const carFormSlice = createSlice({
   initialState: getInitCarForm(),
   reducers: {
     carFormUpdate: (state, action) => {
-      console.log(action.payload);
       const { key, value } = action.payload;
       return { ...state, [key]: value };
     },

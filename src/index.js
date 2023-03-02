@@ -9,6 +9,7 @@ import CarGallery from "./components/CarGallery.static";
 import CarDetails from "./components/CarDetails.static";
 import VillaGallery from "./components/VillaGallery.static";
 import VillaDetails from "./components/VillaDetails.static";
+import CarFormWrapper from "./components/car-form/CarFormWrapper";
 import VillaFormWrapper from "./components/villa-form/VillaFormWrapper";
 
 const main = () => {
@@ -23,6 +24,7 @@ const main = () => {
   injectInHtml("carDetails", CarDetails);
   injectInHtml("villaGallery", VillaGallery);
   injectInHtml("villaDetails", VillaDetails);
+  injectInHtml("carFormWrapper", CarFormWrapper, { store, Provider }, false);
   injectInHtml("villaFormWrapper", VillaFormWrapper, { store, Provider }, false);
 };
 

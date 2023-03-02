@@ -1,0 +1,125 @@
+@use "../mixin" as mxn;
+
+/* TODO: Same as villa-form */
+
+.car-form {
+  --form-top: 80px;
+  --form-width: 100%;
+  --form-position: sticky;
+  --form-header-height: 56px;
+  --form-btn-height: calc(56px + 0.4vmin);
+  --form-top: calc(100% - var(--form-header-height));
+  form {
+    @include mxn.flex("column", "nowrap");
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+  }
+  &__header {
+    h3 {
+      color: var(--white);
+      text-shadow: var(--text-shadow);
+      font-size: var(--font-size-medium);
+      font-weight: var(--font-weight-semi-bold);
+    }
+    @include mxn.flex;
+    cursor: pointer;
+    padding: 0 16px;
+    user-select: none;
+    position: relative;
+    align-items: center;
+    background: var(--emerald);
+    min-height: var(--form-header-height);
+  }
+  &__fields {
+    & > div {
+      @include mxn.flex("column", "nowrap");
+      gap: 16px;
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+    p {
+      &:before {
+        left: 0;
+        right: 0;
+        content: "";
+        bottom: 37%;
+        opacity: 0.5;
+        position: absolute;
+        border-bottom: 2px dashed var(--grey-text);
+      }
+      span {
+        z-index: 2;
+        display: block;
+        padding: 0 8px;
+        position: relative;
+        color: var(--grey-text-2);
+        background: var(--break-white);
+        font-weight: var(--font-weight-semi-bold);
+      }
+      @include mxn.flex;
+      top: -40px;
+      z-index: 100;
+      position: sticky;
+      font-style: italic;
+      justify-content: center;
+      padding: 32px 4px 16px 4px;
+      background: var(--break-white);
+    }
+    padding: 24px;
+    overflow: auto;
+    padding-bottom: 52px;
+    max-height: calc(100% - var(--form-header-height) - var(--form-btn-height));
+  }
+  &__btn {
+    button {
+      --btn-color: var(--black);
+      --btn-bg-color: transparent;
+      --border-opacity: 0 !important;
+      &:hover,
+      &:focus {
+        box-shadow: inset 0 -3px 0 var(--break-white), inset 0 -7px 0 var(--blue-black);
+      }
+      padding: 0 4px;
+      border-radius: 0;
+      transition: var(--cubic-anim);
+      box-shadow: inset 0 -3px 0 var(--break-white), inset 0 -5px 0 var(--blue-black);
+    }
+    @include mxn.flex;
+    @include mxn.center;
+    padding: 0 16px;
+    min-height: var(--form-btn-height);
+    box-shadow: 0px 24.12px 48.24px rgba(69, 90, 100, 0.4), inset 0 1px 0 rgba(137, 138, 139, 0.4);
+  }
+  &__infos {
+    & > span {
+      font-weight: var(--font-weight-semi-bold);
+    }
+  }
+  &__expand {
+    --icon-size: 14px;
+    --icon-color: var(--break-white);
+    top: 50%;
+    right: 16px;
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-50%);
+    text-shadow: var(--text-shadow);
+  }
+  &--fullscreen {
+    --aside-height: calc(var(--100vh) - var(--modal-padding) * 2);
+  }
+  @include mxn.flex("column", "nowrap");
+  left: 0;
+  overflow: hidden;
+  top: var(--form-top);
+  width: var(--form-width);
+  min-width: var(--form-width);
+  max-width: var(--form-width);
+  position: var(--form-position);
+  background: var(--break-white);
+  max-height: var(--aside-height);
+  border-radius: var(--card-radius);
+  transition: var(--cubic-anim) all;
+}
