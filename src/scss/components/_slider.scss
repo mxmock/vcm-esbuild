@@ -27,6 +27,9 @@
       }
     }
   }
+  &--only-one > ul > li {
+    --slider-element-width: 100%;
+  }
   & > ul {
     & > li {
       scroll-snap-align: center;

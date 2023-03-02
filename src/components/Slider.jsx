@@ -3,7 +3,7 @@ import Icon from "./Icon";
 
 const SLIDER_DIRECTION = { RIGHT: 1, LEFT: -1, STOP: 0 };
 
-const Slider = ({ children }) => {
+const Slider = ({ children, onlyOne }) => {
   const slider = React.useRef(null);
 
   const moveSlider = (ref, direction) => {
@@ -50,7 +50,7 @@ const Slider = ({ children }) => {
   }, [slider?.current?.clientWidth]);
 
   return (
-    <div className="slider">
+    <div className={`slider ${onlyOne ? "slider--only-one" : ""}`}>
       <ul
         ref={slider}
         // onMouseEnter={() => clearInterval()}
@@ -59,7 +59,7 @@ const Slider = ({ children }) => {
       >
         {children}
       </ul>
-      {getArrowsHtml()}
+      {!onlyOne && getArrowsHtml()}
     </div>
   );
 };

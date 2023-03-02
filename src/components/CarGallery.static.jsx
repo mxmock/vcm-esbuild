@@ -49,7 +49,7 @@ const CarGallery = ({ data }) => {
         </Modal>
       )}
 
-      <Slider>
+      <Slider onlyOne={images.length === 1}>
         {images.map((i, index) => (
           <li
             key={i.id}
