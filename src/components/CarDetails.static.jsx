@@ -15,8 +15,8 @@ const CarDetails = ({ data }) => {
   const mainFeatures = car.features.filter((f) => byCat(f, 6)).map(mapFeature);
 
   return (
-    <div className="villa-details">
-      <ul className="villa-details__main-features">
+    <div className="car-details">
+      <ul className="car-details__main-features">
         {mainFeatures.map((f) => (
           <li key={f.id}>
             <Feature feature={f} />
@@ -29,16 +29,16 @@ const CarDetails = ({ data }) => {
         title={"Description"}
       >
         <div
-          className="villa-details__text"
+          className="car-details__text"
           dangerouslySetInnerHTML={{ __html: car.descriptionFR }}
         ></div>
       </Card>
 
       <Card title="Vue d'ensemble">
-        <ul className="villa-details__columns">
+        <ul className="car-details__columns">
           {globalView.map((f) => (
             <li key={f.id}>
-              <div className="villa-details__second-features">
+              <div className="car-details__second-features">
                 <Icon name="sun-outline" />
                 <div>
                   <span>{f.labelFR}</span>

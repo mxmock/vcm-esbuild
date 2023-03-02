@@ -1,0 +1,66 @@
+@use "../mixin" as mxn;
+
+/* TODO: Refacto: same as _villa-details.scss component exept for --main-features-width */
+
+.car-details {
+  --columns-width: 100%;
+  --main-features-width: 100%;
+  &__main-features {
+    li {
+      @include mxn.grow;
+      background: var(--break-white);
+      border-radius: var(--card-radius);
+      min-width: var(--main-features-width);
+    }
+    @include mxn.flex;
+    gap: 16px;
+  }
+  &__text {
+    p {
+      padding: 0 24px;
+    }
+    @include mxn.flex("column", "nowrap");
+    gap: 32px;
+  }
+  &__columns {
+    & > li {
+      @include mxn.grow;
+      @include mxn.black-alpha(2.5%);
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: var(--brick-shadow);
+      min-width: var(--columns-width);
+    }
+    @include mxn.flex;
+    gap: 16px;
+    padding: 8px 24px 24px 24px;
+  }
+  &__second-features {
+    --icon-size: 12px;
+    & > div {
+      transform: translateY(-1px);
+    }
+    @include mxn.flex("row", "nowrap");
+    gap: 8px;
+    align-items: center;
+  }
+  &__room {
+    h4 {
+      margin-bottom: 8px;
+      color: rgba(44, 66, 99, 0.7);
+      font-size: var(--font-size-medium);
+      font-weight: var(--font-weight-bold);
+    }
+    .car-details__second-features {
+      --icon-size: 20px;
+    }
+  }
+  @include mxn.flex("column", "nowrap");
+  gap: 40px;
+  @media (min-width: 462px) {
+    --main-features-width: 45%;
+  }
+  @media (min-width: 700px) {
+    --columns-width: 45%;
+  }
+}
