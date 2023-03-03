@@ -1,3 +1,4 @@
+import Map from "./Map";
 import React from "react";
 import Card from "./Card";
 import Icon from "./Icon";
@@ -18,6 +19,7 @@ import annexeData from "../data/annexe.data.json";
 const VillaDetails = ({ data }) => {
   const villa = villasData.find((v) => v.id === data.id);
 
+  /* TODO: Optimize this */
   const rooms = [...villa.rooms, annexeData].map(mapRoom);
   const stuff = villa.features.filter((f) => byCat(f, 2)).map(mapFeature);
   const around = villa.features.filter((f) => byCat(f, 5)).map(mapFeature);
@@ -192,6 +194,11 @@ const VillaDetails = ({ data }) => {
           ))}
         </ul>
       </Card>
+
+      <Map
+        name={villa.name}
+        villaLocation={{ latitude: villa.latitude, longitude: villa.longitude }}
+      />
     </div>
   );
 };
