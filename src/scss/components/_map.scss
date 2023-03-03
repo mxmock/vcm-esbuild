@@ -1,0 +1,50 @@
+@use "../mixin" as mxn;
+
+.map {
+  &:after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    z-index: 1000;
+    position: absolute;
+    pointer-events: none;
+    border-radius: var(--card-radius);
+    box-shadow: 0 0 0 4px var(--white) inset;
+  }
+  min-height: 400px;
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-radius);
+}
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control {
+  & > a {
+    &:active {
+      --break-white: var(--light-grey);
+      opacity: 0.6;
+    }
+    @include mxn.flex;
+    @include mxn.center;
+    line-height: 1.618;
+    border-radius: 4px;
+    color: var(--blue-black);
+    background: var(--break-white);
+    font-family: var(--font-family);
+    box-shadow: var(--brick-shadow);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+  }
+  @include mxn.flex("column", "nowrap");
+  gap: 8px;
+  border: none;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 4px;
+}
+
+.leaflet-popup-content {
+  margin: 4px 32px 4px 8px;
+  font-size: var(--font-size-tiny);
+}

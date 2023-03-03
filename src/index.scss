@@ -2,6 +2,7 @@
 @use "scss/fonts/metropolis";
 @use "scss/variables";
 @use "scss/general";
+@use "scss/leaflet";
 
 @use "scss/elements/logo";
 @use "scss/elements/icon";
@@ -12,6 +13,7 @@
 @use "scss/elements/feature";
 @use "scss/elements/textarea";
 
+@use "scss/components/map";
 @use "scss/components/card";
 @use "scss/components/modal";
 @use "scss/components/header";
