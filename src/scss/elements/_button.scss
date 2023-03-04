@@ -1,10 +1,6 @@
 @use "../mixin" as mxn;
 
 .button {
-  --btn-radius: 50px;
-  --btn-height: 40px;
-  --btn-color: var(--break-white);
-  --btn-bg-color: var(--blue-logo);
   &:hover,
   &:focus,
   &:focus-visible,
@@ -24,24 +20,24 @@
     transition: 0.08s 0.1s;
   }
   span {
-    line-height: var(--btn-height);
     font-family: var(--font-family);
     font-size: var(--font-size-medium);
+    line-height: var(--btn-height, 40px);
     font-weight: var(--font-weight-semi-bold);
   }
   @include mxn.flex;
   @include mxn.border;
   --border-opacity: 0;
   --border-spacing: 2px;
-  --border-color: var(--btn-color);
+  --border-color: var(--btn-color, var(--break-white));
   border: none;
   cursor: pointer;
   padding: 0 16px;
   user-select: none;
   white-space: nowrap;
   text-decoration: none;
-  color: var(--btn-color);
-  min-height: var(--btn-height);
-  background: var(--btn-bg-color);
-  border-radius: var(--btn-radius);
+  min-height: var(--btn-height, 40px);
+  border-radius: var(--btn-radius, 50px);
+  color: var(--btn-color, var(--break-white));
+  background: var(--btn-bg-color, var(--blue-logo));
 }
