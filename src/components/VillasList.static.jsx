@@ -32,9 +32,9 @@ const getImageHtml = (villa, index) => {
         <img
           loading={index >= 2 ? "lazy" : "eager"}
           decoding="async"
-          src={"https://furansujapon.com/wp-content/uploads/2022/09/Great-Teacher-Onizuka.jpg"}
-          srcSet={`${mainImage} 480w, ${mainImage} 1000w`}
-          sizes="50vw"
+          src={`${mainImage.pathFull}`}
+          sizes="80vw"
+          srcSet={`${mainImage.pathLarge} 992w, ${mainImage.pathMedium} 768w, ${mainImage.pathSmall} 600w`}
           alt={`${IMG_DESCRIPTION} ${villa.name}`}
           title={`${IMG_DESCRIPTION} ${villa.name}`}
         />
@@ -46,7 +46,18 @@ const getImageHtml = (villa, index) => {
 const getMainImg = (villa) => {
   const f = (d) => d.name.includes("ext_1") || d.name.includes("debordement");
   const doc = villa.documents.find(f);
-  return doc ? `${ASSETS_URL}/${doc.path}` : "";
+  if (!doc) return null;
+
+  const toIgnore = `/images/`;
+  const index = doc.path.indexOf(toIgnore);
+  const path = doc.path.slice(index + toIgnore.length, doc.path.length - 3);
+
+  return {
+    pathFull: `${ASSETS_URL}/c_scale,q_auto,w_1900/v1677858588/${path}webp`,
+    pathLarge: `${ASSETS_URL}/c_scale,q_auto,w_992/v1677858588/${path}webp`,
+    pathMedium: `${ASSETS_URL}/c_scale,q_auto,w_768/v1677858588/${path}webp`,
+    pathSmall: `${ASSETS_URL}/c_scale,q_auto,w_600/v1677858588/${path}webp`,
+  };
 };
 
 const getCardHtml = (villa) => (
