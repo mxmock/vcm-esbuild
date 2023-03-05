@@ -6,17 +6,24 @@ import Select from "../Select";
 import Switch from "../Switch";
 import Textarea from "../Textarea";
 import DateInput from "../DateInput";
+import StatusPopup from "./StatusPopup";
 import NumberInput from "../NumberInput";
 import store from "../../redux/store.js";
 import { useSelector } from "react-redux";
 import { COUNTRIES, GENDERS } from "../../constants/form.const";
-import { villaBooking, villaFormUpdate } from "../../redux/villa-form/villa-form.slice";
+import { resetForm, villaBooking, villaFormUpdate } from "../../redux/villa-form/villa-form.slice";
 
 const VillaForm = ({ villa, nbrOfPersons, inModal, onFullscreen }) => {
+  /* TODO: State up to wrapper - handle close fullscreen on submit */
   const form = useSelector((store) => store.villaFormReducer);
 
   return (
     <>
+      <StatusPopup
+        form={form}
+        onClose={closeModal}
+      />
+
       <div className={`villa-form ${inModal ? "villa-form--fullscreen" : ""}`}>
         <div
           className="villa-form__header"
@@ -182,6 +189,10 @@ const handleSubmit = (e, form, villa) => {
 
 const updateForm = (key, value) => {
   dispatch(villaFormUpdate({ key, value }));
+};
+
+const closeModal = () => {
+  dispatch(resetForm());
 };
 
 export default VillaForm;
