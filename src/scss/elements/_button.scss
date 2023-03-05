@@ -29,6 +29,7 @@
   @include mxn.border;
   --border-opacity: 0;
   --border-spacing: 2px;
+  --border-radius: var(--btn-radius, 50px);
   --border-color: var(--btn-color, var(--break-white));
   border: none;
   cursor: pointer;
