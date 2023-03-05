@@ -1,36 +1,23 @@
-import { getRequest } from "../../api/api";
+import { postRequest } from "../../api/api";
 import { getInitVillaForm } from "../../constants/form.const";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-export const getTodos = createAsyncThunk("todos/getAll", async (_, thunkApi) => {
-  const { fulfillWithValue, rejectWithValue } = thunkApi;
-  const { status, result, error } = await getRequest("/allVillas");
-
-  return error
-    ? rejectWithValue(`Cannot get todos - Error status ${status} - ${error}`)
-    : fulfillWithValue(result);
-});
 
 export const villaBooking = createAsyncThunk("villa/booking", async (form, thunkApi) => {
   const { fulfillWithValue, rejectWithValue } = thunkApi;
 
-  console.log(formatBooking(form));
-
-  // const { status, result, error } = await getRequest("/allVillas");
-  // return error
-  //   ? rejectWithValue(`Cannot get todos - Error status ${status} - ${error}`)
-  //   : fulfillWithValue(result);
+  const { status, result, error } = await postRequest("/addBookingRequest", formatBooking(form));
+  return !!error
+    ? rejectWithValue(`Cannot post villa booking form - Error status ${status} - ${error}`)
+    : fulfillWithValue(result);
 });
 
-const formatBooking = (form) => {
-  return {
-    ...form,
-    villa: `${form.villa}`,
-    gender: form.gender === "male" ? 1 : 2,
-    numberOfAdult: parseFloat(form.numberOfAdult),
-    numberOfChild: parseFloat(form.numberOfChild),
-  };
-};
+const formatBooking = (form) => ({
+  ...form,
+  villa: `${form.villa}`,
+  gender: form.gender === "male" ? 1 : 2,
+  numberOfAdult: parseFloat(form.numberOfAdult),
+  numberOfChild: parseFloat(form.numberOfChild),
+});
 
 const villaFormSlice = createSlice({
   name: "villa-form",
@@ -40,20 +27,25 @@ const villaFormSlice = createSlice({
       const { key, value } = action.payload;
       return { ...state, [key]: value };
     },
+    resetForm: (state, action) => ({ ...getInitVillaForm() }),
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getTodos.fulfilled, (state, action) => {
-        console.log(action);
+      .addCase(villaBooking.fulfilled, (state, action) => {
+        console.log("success");
+        return { ...getInitVillaForm(), success: true };
       })
-      .addCase(getTodos.rejected, (state, action) => {
-        console.log(action);
+      .addCase(villaBooking.rejected, (state, action) => {
+        console.log("failed");
+        console.log(action.payload);
+        return { ...state, loading: false, success: false, error: action.payload };
       })
-      .addCase(getTodos.pending, (state, action) => {
-        console.log(action);
+      .addCase(villaBooking.pending, (state, action) => {
+        console.log("loading");
+        return { ...state, loading: true, success: false, error: null };
       });
   },
 });
 
-export const { villaFormUpdate } = villaFormSlice.actions;
+export const { villaFormUpdate, resetForm } = villaFormSlice.actions;
 export default villaFormSlice.reducer;

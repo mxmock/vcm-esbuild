@@ -40,11 +40,13 @@ const request = async (url, config) => {
 };
 
 const handleResponse = (result, status, error) => {
-  const hasError = !result || status >= 400;
+  /* TODO: Set hasError the right way */
+  // const hasError = !result || status >= 400;
+  const hasError = status >= 400;
   return {
     status,
     result: hasError ? null : result,
-    error: hasError ? `Result is null ${error || ""}` : null,
+    error: hasError ? `Result is null: ${error || ""}` : null,
   };
 };
 
