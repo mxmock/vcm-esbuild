@@ -24,12 +24,12 @@ const getMapConfig = (L) => ({
 //   accessToken: TOKEN_MAPBOX,
 // };
 
-const MARKER_ICON_CONFIG = {
-  iconUrl: "../../assets/images/villa-marker.png",
+const getMarkerConfig = (marker) => ({
+  iconUrl: marker,
   iconSize: [35, 45], // size of the icon
   iconAnchor: [18, 47], // point of the icon which will correspond to marker's location
   popupAnchor: [0, -40], // point from which the popup should open relative to the iconAnchor
-};
+});
 
 const Map = ({ name, villaLocation }) => {
   const initMap = async () => {
@@ -51,8 +51,10 @@ const Map = ({ name, villaLocation }) => {
     addMarker();
   };
 
-  const addMarker = () => {
-    const icon = L.icon({ ...MARKER_ICON_CONFIG });
+  const addMarker = async () => {
+    if (typeof window === "undefined") return;
+    const marker = await import("../assets/images/villa-marker.png");
+    const icon = L.icon({ ...getMarkerConfig(marker.default) });
     const villaMarker = L.marker(location, { icon }).addTo(map);
     villaMarker.bindPopup(`${name}`).openPopup();
   };

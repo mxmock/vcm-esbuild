@@ -23,7 +23,7 @@ const ctx = await esbuild.context({
   sourcemap: true,
   outdir: `${OUT_DIR}/js`,
   color: true,
-  loader: { ".jpg": "dataurl" },
+  loader: { ".png": "dataurl" },
 });
 
 await ctx.watch();

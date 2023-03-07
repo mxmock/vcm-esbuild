@@ -60,7 +60,7 @@ const result = await esbuild.build({
   legalComments: "none",
   outdir: JS_OUT_DIR,
   pure: ["console"],
-  loader: { ".jpg": "dataurl" },
+  loader: { ".png": "dataurl" },
 });
 console.timeEnd(TIME_LOG);
 console.log("-------------------------------------------");
