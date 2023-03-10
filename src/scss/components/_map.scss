@@ -14,6 +14,7 @@
     box-shadow: 0 0 0 4px var(--white) inset;
   }
   min-height: 400px;
+  will-change: transform;
   box-shadow: var(--card-shadow);
   border-radius: var(--card-radius);
 }
