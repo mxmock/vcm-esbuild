@@ -24,7 +24,7 @@ const postRequest = async (url, body = {}, token = null) => {
 };
 
 const request = async (url, config) => {
-  let status = -1;
+  let status = 500;
   let error = null;
   let result = null;
 
@@ -40,11 +40,13 @@ const request = async (url, config) => {
 };
 
 const handleResponse = (result, status, error) => {
-  const hasError = !result || status >= 400;
+  /* TODO: Set hasError the right way */
+  // const hasError = !result || status >= 400;
+  const hasError = status >= 400 || (!!error && error !== "Unexpected end of JSON input");
   return {
     status,
     result: hasError ? null : result,
-    error: hasError ? `Result is null ${error || ""}` : null,
+    error: hasError ? `Result is null: ${error || ""}` : null,
   };
 };
 

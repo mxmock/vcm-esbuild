@@ -54,3 +54,44 @@
     }
   }
 }
+
+.popup-info {
+  &--success {
+    --popup-color: var(--green);
+  }
+  &--error {
+    --popup-color: var(--red);
+  }
+  &--default {
+    --popup-color: var(--blue-bold);
+  }
+  &__title {
+    h4 {
+      text-align: center;
+      color: var(--popup-color);
+      font-size: var(--font-size-large);
+      font-weight: var(--font-weight-bold);
+    }
+    & > div {
+      --icon-size: 16px;
+      --icon-color: var(--popup-color);
+    }
+    @include mxn.flex("column", "nowrap");
+    padding: 22px 16px 16px 16px;
+  }
+  &__body {
+    padding: 16px;
+    @media (min-width: 700px) {
+      padding: 48px;
+    }
+  }
+  &__footer {
+    --btn-color: var(--blue-black);
+    --btn-radius: calc(var(--card-radius) - 8px);
+    --btn-bg-color: var(--light-grey);
+    @include mxn.flex;
+    padding: 16px;
+    justify-content: flex-end;
+  }
+  box-shadow: inset 0 6px 0 var(--popup-color);
+}

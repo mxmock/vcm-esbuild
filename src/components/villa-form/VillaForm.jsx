@@ -8,13 +8,10 @@ import Textarea from "../Textarea";
 import DateInput from "../DateInput";
 import NumberInput from "../NumberInput";
 import store from "../../redux/store.js";
-import { useSelector } from "react-redux";
 import { COUNTRIES, GENDERS } from "../../constants/form.const";
 import { villaBooking, villaFormUpdate } from "../../redux/villa-form/villa-form.slice";
 
-const VillaForm = ({ villa, nbrOfPersons, inModal, onFullscreen }) => {
-  const form = useSelector((store) => store.villaFormReducer);
-
+const VillaForm = ({ form, villa, nbrOfPersons, inModal, onFullscreen }) => {
   return (
     <>
       <div className={`villa-form ${inModal ? "villa-form--fullscreen" : ""}`}>

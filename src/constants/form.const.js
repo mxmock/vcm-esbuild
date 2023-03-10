@@ -71,6 +71,9 @@ const getInitVillaForm = () => ({
   country: "FRANCE",
   wantACar: false,
   message: "",
+  loading: false,
+  success: false,
+  error: null,
 });
 
 const getInitCarForm = () => ({
