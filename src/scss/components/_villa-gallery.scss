@@ -7,7 +7,6 @@
   &__image {
     @include mxn.placeholder;
     cursor: pointer;
-    background: var(--light-grey);
     box-shadow: var(--card-shadow);
     border-radius: var(--card-radius);
     min-width: var(--gallery-image-width);

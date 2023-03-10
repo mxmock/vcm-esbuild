@@ -35,6 +35,7 @@
   }
   &__image {
     div {
+      @include mxn.placeholder;
       min-height: var(--image-height);
       border-radius: var(--card-radius);
     }
@@ -42,6 +43,7 @@
   }
   &__card {
     @include mxn.flex("column", "nowrap");
+    z-index: 1;
     position: relative;
     background: var(--white);
     min-width: var(--card-width);
