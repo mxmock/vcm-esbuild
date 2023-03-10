@@ -1,5 +1,14 @@
 @use "./mixin" as mxn;
 
+@keyframes smoothAppear {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html,
 body,
 article,
@@ -161,6 +170,12 @@ ul {
   background-image: url("~../../../assets/images/bg_effect_home.svg");
 }
 
+#villaGallery,
+#villaDetails,
+#villasList {
+  animation: var(--cubic-anim-slow) smoothAppear;
+}
+
 .villa-stuff-display {
   --villa-stuff-gap: 40px;
   --villa-aside-width: 100%;
@@ -169,11 +184,15 @@ ul {
     @include mxn.grow(2);
   }
   .form-aside {
+    & > * {
+      animation: var(--cubic-anim-slow) smoothAppear;
+    }
     @include mxn.grow;
     @include mxn.flex("column", "nowrap");
     top: 16px;
     z-index: 1000;
     position: sticky;
+    background: var(--break-white);
     box-shadow: var(--card-shadow);
     max-height: var(--aside-height);
     border-radius: var(--card-radius);

@@ -6,6 +6,7 @@ export const villaBooking = createAsyncThunk("villa/booking", async (form, thunk
   const { fulfillWithValue, rejectWithValue } = thunkApi;
 
   const { status, result, error } = await postRequest("/addBookingRequest", formatBooking(form));
+
   return !!error
     ? rejectWithValue(`Cannot post villa booking form - Error status ${status} - ${error}`)
     : fulfillWithValue(result);
@@ -27,7 +28,7 @@ const villaFormSlice = createSlice({
       const { key, value } = action.payload;
       return { ...state, [key]: value };
     },
-    resetForm: (state, action) => ({ ...getInitVillaForm() }),
+    clearStatus: (state, action) => ({ ...state, loading: false, error: null, success: false }),
   },
   extraReducers: (builder) => {
     builder
@@ -47,5 +48,5 @@ const villaFormSlice = createSlice({
   },
 });
 
-export const { villaFormUpdate, resetForm } = villaFormSlice.actions;
+export const { villaFormUpdate, clearStatus } = villaFormSlice.actions;
 export default villaFormSlice.reducer;
